@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import headerImg from "../../../images/logo2.png";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -17,9 +18,11 @@ const Header = () => {
           </a>
           <div className="items-center flex-shrink-0 hidden lg:flex">
             <FontAwesomeIcon icon={faShoppingCart} />
-            <button className="self-center px-8 py-3 rounded">Log in</button>
+            <button className="self-center px-8 py-3 rounded">
+              <NavLink to="/login">Log in</NavLink>
+            </button>
             <button className=" bg-red-500 text-white self-center px-8 py-3 font-semibold rounded-full dark:bg-violet-400 dark:text-coolGray-900">
-              Sign up
+              <NavLink to="/signup">Sign up</NavLink>
             </button>
           </div>
           <button className="p-4 lg:hidden">
