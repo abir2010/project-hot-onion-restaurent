@@ -13,6 +13,7 @@ const Breakfast = () => {
   const [detailpd, setDetailpd] = useState({});
   const [orderItem, setOredrItem] = useState(1);
   const history = useHistory();
+  const history2 = useHistory();
   const handleDetails = (id) => {
     setOredrItem(1);
     let found = items.find((pd) => pd.id == id);
@@ -22,11 +23,14 @@ const Breakfast = () => {
     setDetailpd({});
     history.push("/breakfast");
   };
+  const handleCheckOut = () => {
+    history2.push("/checkout");
+  };
   const plusBTN = () => {
     setOredrItem(orderItem + 1);
   };
   const minusBTN = () => {
-    if(orderItem<=1){
+    if (orderItem <= 1) {
       return;
     }
     setOredrItem(orderItem - 1);
@@ -211,7 +215,10 @@ const Breakfast = () => {
               ></Bitem>
             ))}
           </div>
-          <button className="mt-4 bg-gray-300 rounded-lg px-4 py-1 focus:ring">
+          <button
+            onClick={handleCheckOut}
+            className="mt-4 bg-gray-300 rounded-lg px-4 py-1 focus:ring"
+          >
             Checkout your food
           </button>
         </section>

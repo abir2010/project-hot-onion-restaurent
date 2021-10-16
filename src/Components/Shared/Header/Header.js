@@ -3,8 +3,10 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import headerImg from "../../../images/logo2.png";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const Header = () => {
+  const { user, logOut } = useAuth();
   return (
     <div>
       <header className="px-4 py-2 dark:bg-coolGray-800 dark:text-coolGray-100">
@@ -16,14 +18,27 @@ const Header = () => {
           >
             <img width="160px" src={headerImg} alt="" />
           </a>
-          <div className="items-center flex-shrink-0 hidden lg:flex">
+          <div className="items-center gap-4 flex-shrink-0 hidden lg:flex">
             <FontAwesomeIcon icon={faShoppingCart} />
-            <button className="self-center px-8 py-3 rounded">
-              <NavLink to="/login">Log in</NavLink>
-            </button>
-            <button className=" bg-red-500 text-white self-center px-8 py-3 font-semibold rounded-full dark:bg-violet-400 dark:text-coolGray-900">
-              <NavLink to="/signup">Sign up</NavLink>
-            </button>
+            {user.email ? (
+              <div>
+                <button
+                  onClick={logOut}
+                  className=" bg-red-500 text-white self-center px-8 py-3 font-semibold rounded-full dark:bg-violet-400 dark:text-coolGray-900"
+                >
+                  <NavLink to="/signup">Log Out</NavLink>
+                </button>
+              </div>
+            ) : (
+              <div>
+                <button className="self-center px-8 py-3 rounded">
+                  <NavLink to="/login">Log in</NavLink>
+                </button>
+                <button className=" bg-red-500 text-white self-center px-8 py-3 font-semibold rounded-full dark:bg-violet-400 dark:text-coolGray-900">
+                  <NavLink to="/signup">Sign up</NavLink>
+                </button>
+              </div>
+            )}
           </div>
           <button className="p-4 lg:hidden">
             <svg

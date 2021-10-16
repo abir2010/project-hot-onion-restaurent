@@ -1,6 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import MainHome from "./Components/Home/MainHome/MainHome";
+import NotFound from "./Components/NotFound/NotFound";
 import Login from "./Components/Registration/Login/Login";
 import Register from "./Components/Registration/Register/Register";
 import Footer from "./Components/Shared/Footer/Footer";
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <Register></Register>
+            </Route>
+            <Route exact path="*">
+              <NotFound></NotFound>
             </Route>
           </Switch>
           <Footer></Footer>

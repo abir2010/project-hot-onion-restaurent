@@ -13,6 +13,7 @@ const Lunch = () => {
   const [detailpd, setDetailpd] = useState({});
   const [orderItem, setOredrItem] = useState(1);
   const history = useHistory();
+  const history2 = useHistory();
   const handleDetails = (id) => {
     setOredrItem(1);
     let found = litems.find((pd) => pd.id == id);
@@ -22,11 +23,15 @@ const Lunch = () => {
     setDetailpd({});
     history.push("/lunch");
   };
+
+  const handleCheckOut = () => {
+    history2.push("/checkout");
+  };
   const plusBTN = () => {
     setOredrItem(orderItem + 1);
   };
   const minusBTN = () => {
-    if(orderItem<=1){
+    if (orderItem <= 1) {
       return;
     }
     setOredrItem(orderItem - 1);
@@ -204,9 +209,19 @@ const Lunch = () => {
         <section className="m-4 md:m-8 dark:bg-coolGray-800 dark:text-coolGray-100">
           <div className="container mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {litems.map((litem) => (
-              <Litem key={litem.id} handleDetails={handleDetails} litem={litem}></Litem>
+              <Litem
+                key={litem.id}
+                handleDetails={handleDetails}
+                litem={litem}
+              ></Litem>
             ))}
           </div>
+          <button
+            onClick={handleCheckOut}
+            className="mt-4 bg-gray-300 rounded-lg px-4 py-1 focus:ring"
+          >
+            Checkout your food
+          </button>
         </section>
       )}
     </div>

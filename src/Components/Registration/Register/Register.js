@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import { NavLink } from "react-router-dom";
 import loginImg from "../../../images/logo2.png";
 
 const Register = () => {
-    return (
-        <div className="flex justify-center">
+  return (
+    <div className="flex justify-center">
       <div className="m-8 w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-coolGray-900 dark:text-coolGray-100">
         <div className="flex justify-center mb-16">
           <img width="200px" src={loginImg} alt="" />
@@ -53,7 +53,7 @@ const Register = () => {
         </p>
       </div>
     </div>
-    );
+  );
 };
 
 export default Register;

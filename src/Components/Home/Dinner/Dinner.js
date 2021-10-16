@@ -1,4 +1,8 @@
-import { faMinus, faPlus, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMinus,
+  faPlus,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
@@ -9,6 +13,7 @@ const Dinner = () => {
   const [detailpd, setDetailpd] = useState({});
   const [orderItem, setOredrItem] = useState(1);
   const history = useHistory();
+  const history2 = useHistory();
   const handleDetails = (id) => {
     setOredrItem(1);
     let found = ditems.find((pd) => pd.id == id);
@@ -17,6 +22,9 @@ const Dinner = () => {
   const handleGoBack = () => {
     setDetailpd({});
     history.push("/dinner");
+  };
+  const handleCheckOut = () => {
+    history2.push("/checkout");
   };
   const plusBTN = () => {
     setOredrItem(orderItem + 1);
@@ -207,6 +215,12 @@ const Dinner = () => {
               ></Ditem>
             ))}
           </div>
+          <button
+            onClick={handleCheckOut}
+            className="mt-4 bg-gray-300 rounded-lg px-4 py-1 focus:ring"
+          >
+            Checkout your food
+          </button>
         </section>
       )}
     </div>
